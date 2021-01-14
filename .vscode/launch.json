@@ -1,0 +1,61 @@
+{
+    // 使用 IntelliSense 以得知可用的屬性。
+    // 暫留以檢視現有屬性的描述。
+    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${file}", 
+        },
+  
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "1127",
+            "file": "${file}"
+
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "prac",
+            "file": "d:\\網站設計與建置\\1106\\webpage-s1410722025\\freecss\\practice.html"
+
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "123",
+            "file": "d:\\網站設計與建置\\1030\\webpage-s1410722025\\Exercise1\\123.html"
+
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "freecss",
+            "file": "e:\\網站設計與建置\\0928作業\\webpage-s1410722025\\freecss\\index.html"
+
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "now",
+            "file": "${file}"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "exercise1 index.html",
+            "file": "d:\\網站設計與建置\\0918\\webpage-s1410722025\\Exercise1\\index.html"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Open index.html",
+            "file": "d:\\網站設計與建置\\0918\\webpage-s1410722025\\index.html"
+        }
+    ]
+}

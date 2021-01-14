@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <title>留言板</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">留言板</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%= name %></a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> 登出</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <textarea class="form-control" id="" cols="30" rows="5" placeholder="請留下你想說的話?"></textarea>
+                <br>
+                <button id="submit" class="btn btn-primary btn-lg btn-block">留言</button>
+                <hr>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $("#submit").click(function (e) {
+                $.ajax({
+                    type: "POST",
+                    url: "/msg",
+                    data: { text: $("textarea").val() },
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response);
+                        location.href = '/'
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

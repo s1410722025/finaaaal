@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<!-- 鎖住畫面 -->
+<body style="overflow-y:hidden">
+    <div class="container bg-image">
+        <div class="row" id="rainbow" >
+         <div class="col-6 ">
+    <form action="/pass" method="POST">
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+                <span class="input-group-text">學號</span>
+            </div>
+            <div>
+        <input type="text" class="form-control" placeholder="Enter student number" id="uid" name="uid">
+            </div>
+        </div>
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+                <span class="input-group-text">密碼</span>
+            </div>
+            <div >
+        <input type="password" class="form-control" placeholder="Enter password" id="upwd" name="upwd">
+            </div>
+        </div>
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+                <span class="input-group-text">名稱</span>
+            </div>
+            <div >
+        <input type="text" class="form-control" placeholder="Enter your name" id="uname" name="uname">
+            </div>
+        </div>
+        <div class="col-md-12 " style="text-align: center;">
+            <input type="submit" id="pass" style="background-image:url(images/登入註冊/註冊按鈕.png); width:154px; height:55px;" value="" ></input>
+            </div>
+    </form>
+         </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/crypto-js.js"></script>
+
+    <script type="text/javascript">
+      $('#pass').click(function (evt) {
+          evt.preventDefault();
+          $.ajax({
+              url: '/pass',
+              type: 'POST',
+              data: {
+                  id: $('#uid').val(),
+                  password: CryptoJS.SHA256($('#upwd').val()).toString(CryptoJS.enc.Hex),
+                  name: $('#uname').val(),
+                },
+              success: function (data) {
+                  if (data.ret_code === 0) {
+                      console.log("Success!");
+                      alert("註冊成功");
+                      window.location.href="/signin.html"; 
+                  }else if(data.ret_code === 1){
+                      alert("帳號或密碼錯誤");
+                  }else if(data.ret_code === 2){
+                      alert("註冊失敗");
+                      // window.location.href="/pass.html";
+                      window.history.go(0);
+                  }else if(data.ret_code === 3){
+                      alert("輸入不得為空!");
+                  }else if(data.ret_code === 4){
+                      alert("重複註冊");
+                      window.history.go(0);
+                  }
+                  
+              }
+          });
+      });
+  </script>
+
+</body>
+</html>

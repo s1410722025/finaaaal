@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<script src="https://cdn.bootcss.com/vue/2.1.6/vue.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>商品頁面</title>
+
+<style>
+
+.rightBox {background:#fff; padding-bottom:2em; padding-top:5px; margin: auto; max-width: 100%;}
+.title2 {font-size:1.8em; margin:0 0 0.5em; border-bottom: 2px solid #01553D; padding-bottom: 0.2em; color: #01553d; text-align: right; padding-right: 1em;}
+.titleBtn a {color:#fff; display:inline-block; width:30px; height:30px; line-height:30px; text-align:center; top:0; font-size:0.7em; text-decoration: none; cursor:pointer;}
+.titleBtn a + a {margin-left:-5px;}
+.titleBtn {border:1px solid #01553d ; border-radius:5px; display:inline-block; background:#01553d; line-height:0.9em;}
+.titleBtn .active, .titleBtn a:hover{background:#fff; color:#01553d;}
+.titleBtn a:first-child {border-top-left-radius:5px; border-bottom-left-radius:5px;}
+.titleBtn a:last-child {border-top-right-radius:5px; border-bottom-right-radius:5px;}
+.articles {min-height:150px; padding:1.5em 0; cursor:pointer; position:relative;}
+.cover img {height:130px; width:88px; display:block; border:1px solid #ccc; padding:0.3em; margin:0 auto;}
+.articles + .articles {border-top:1px dotted #ccc;  border-bottom:1px dotted #ccc;}
+.articles h4 {font-size:1.5em; margin-bottom:0.8em; color:#000; font-weight:500;}
+.articles p {font-size:1.2em; line-height:1.5em; } 
+.articles:hover h4 {color:#01553D;}
+.time {text-align:right; margin-top:1em; color:#333;}
+.articles .mask {height:130px; width:88px; position:absolute; overflow:hidden; top:0; left:0;}
+.original {color:#01553D;}
+.reprint{color:#555;}
+
+.articleList > a {font-size:1.2em; line-height:2em; border-bottom:1px dotted #ccc; display:block; color:#333; cursor:pointer;}
+.articleList > a:hover {color:#01553D;}
+
+.titleBox {border-bottom:1px solid #ccc; margin:10px 20px 0; }
+.titleBox h1 {text-align:center; color:#01553D;}
+.titleBox p {text-align:right; font-size:16px; margin:10px 0;}
+.titleBox i { margin:0 10px 0 40px;}
+.articleText {font-size:16px; margin:20px;}
+.articleText p {text-indent:2em;}
+.commentBox {margin:20px;}
+.commentBox h3 {color: #fffaf9; background: #e7958a; padding: 8px 15px; text-align: left; font-size: 16px; font-weight: bold;}
+.noComment {display:none;}
+.comment {margin-bottom:15px;}
+.comment + .comment, .reply + .reply{border-top:1px solid #ccc;}
+.comment b{color:#9b342a; font-size:16px; display:block; margin:5px 0;}
+.comment b span {color:#333; font-size:14px; margin-left:20px;}
+.comment p {font-size:16px; color:#333;}
+.commentBox textarea {overflow: auto; width: 100%; height: 95px; outline: none; resize: none;}
+.commentBox button {float:right; margin-left:20px; padding:5px 30px; background:#e7958a; border-radius:5px; color:#fff; font-size:16px; font-weight: bold;}
+.commentBox button:hover {color:#fff; background:#59b399}
+.reply {margin:15px 0 15px 50px;}
+
+</style>
+
+</head>
+<body>
+	<div class="container pt-3 " id="logo">
+        <div class="row boder" id="homepage">
+            <div class="col ">
+              <a href="/" ><img src="images/中科大蝦米.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+        </div>
+            <div class="col ">
+                <img src="images/蝦米LOGO.png" class="mx-auto d-block">
+            </div>
+            <div class="col ">
+                <div>
+                  <% if (name) { %>
+                    <!-- <a class="btn btn-default" href="/logout">登出</a> -->
+                    <a href="/up" > <img src="images/我要救學弟妹.png" alt="HTML tutorial" class="mx-auto d-block"></a>
+                  <% } else { %>
+                    <!-- <a class="btn btn-default" href="/login">登入</a> -->
+                    <a href="/help"> <img src="images/我要救學弟妹.png" alt="HTML tutorial" class="mx-auto d-block"></a>
+                  <% } %>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+
+	<div class="container-fluid pt-3 ">
+		<img class="w-100" src="images/彩條.png" class="mx-auto d-block"> 
+	  </div>
+	 
+  
+	  <!-- col lg -->
+	  <div class="container pt-3 ">
+		<div class="row" id="homepage">
+			<!-- <div class="p-3 col-lg-2 lg2">
+				
+			</div> -->
+			<div class="p-3 col-lg-2 lg2">
+			  <a href="/resource" ><img src="images/不求人指南字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+			  <br>
+			</div>
+			<div class="p-3 col-lg-2 lg2">
+			  <a href="/print" ><img src="images/輸出店錦囊字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+			  <br>
+			</div>
+			<div class="p-3 col-lg-2 lg2">
+			  <a href="/exchange" ><img src="images/二手物交換字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+			  <br>
+			</div>
+			<div class="p-3 col-lg-2 lg2">
+			  <a href="/question" ><img src="images/疑難來解惑字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+			  <br>
+			</div>
+		  
+		</div>
+	</div>
+
+
+<img src="images/二手物交換/2/4.png" class="mx-auto d-block" alt="" >
+<div class="container prodoct ">
+  <% product.forEach(function(item){ %>
+    <div class="row col-4"style="margin:40px 0% 0% 25px;" > 
+        <div class="col ">
+            <img src="upload/<%= item.img %>"  alt="" >
+            <div class="prize">
+                <h1 style="text-align:center; padding:16px;font-weight: bold;color:#243f5e;"><%= item.price %>元</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row col-8 " style="margin:35px 50px 0% 0%;padding-right: 80px;">
+        <div class="col-12 text-left" style="font-size: 20px;font-weight: bold;padding-left:4px;">商品照片</div>
+        <div class="col-4 p-2">
+            <img src="images/二手物交換/2/10.png" alt="" >
+        </div>
+        <div class="col-4 p-2">
+            <img src="images/二手物交換/2/10.png" alt="" >
+        </div>
+        <div class="col-4 p-2">
+            <img src="images/二手物交換/2/10.png" alt="" >
+        </div>
+        <div class="col-12" style="padding-top: 30px;padding-left: 9px;">
+            <div class="explain">
+                <h1><%= item.Description %></h1>
+            </div>
+        </div>
+    </div>
+  <% }) %>
+</div>
+ <!-- 留言 -->
+
+<!-- <div class="container">
+    <div class="row messege" style="display: flex;justify-content: space-between;">
+                <div class="col-3 p-5">
+                    <h2  style="color:#243f5e;font-weight: bold;">1410722024</h2>
+                </div>
+                <div class="col-7 " style="height: 30%;padding: 0px;">
+                    <h2 class="mt-3 " style="text-align: center;font-weight: bold;">拜託我需要,明天13:00中商一樓面交!</h2>
+                </div>
+                <div class="col-1" style="padding: 0px 0px 0px 59px;"> <img src="images/二手物交換/留言顯示/倒讚.png" class="rounded mx-auto d-block" alt="" style="height: 40px;"><h3 style="text-align: center;color: rgb(255, 255, 255);">0</h3></div>
+                <div class="col-1" style="padding: 20px;"> <img src="images/二手物交換/留言顯示/讚.png" class="rounded mx-auto d-block" alt="" style="height: 40px;"><h3 style="text-align: center;color: rgb(255, 255, 255);">1</h3></div>
+    </div>
+</div> -->
+
+<div class="main">
+	<div class="container">
+		<div class="col-md-9 rightBox" id="comment">
+			<article-content v-bind:article="article"></article-content>
+			<commemt-content v-bind:comment="comment" v-on:change="changCommmer"></commemt-content>
+			<comment-textarea v-bind:type="type" v-bind:name="oldComment" v-on:submit="addComment" v-on:canel="canelCommit"></comment-textarea>
+		</div>
+	</div>
+</div>
+
+<footer id="footer">
+    <div class="container-fluid pt-3 ">
+
+      <img class="w-100" src="images/彩條.png" class="mx-auto d-block"> 
+
+    </div>
+
+
+    <!-- 聯絡方式 -->
+
+    <div class="container-fluid pt-3 ">
+      <img  src="images/聯絡方式.png" class="mx-auto d-block"> 
+    </div>
+  
+</footer>
+
+
+ <!-- 我要 -->
+<!-- <div class="iwant" style="left:70%;top: 400px;">
+    <img src="images/二手物交換/2/5.png" alt="" >
+</div> -->
+
+<script>
+//     Vue.component('article-content',{
+// 	template:'\
+// 	<div>\
+// 		<div class="titleBox">\
+// 			<h1>{{article.title}}</h1>\
+// 			<p><i class="glyphicon glyphicon-time"></i><span>{{article.time}}</span><i class="glyphicon glyphicon-eye-open"></i><span>阅读量：{{article.read}}</span></p>\
+// 		</div>\
+// 		<div class="articleText" v-html="article.content"></div>\
+// 	</div>',
+// 	props: ['article']
+// });
+
+Vue.component('commemt-content',{
+	template:'\
+	<div class="commentBox">\
+		<h3>留言</h3>\
+		<p v-if="comment.length==0">我要當頭香！</p>\
+		<div v-else>\
+			<div class="comment" v-for="(item,index) in comment" v-bind:index="index" >\
+				<b>{{item.name}}<span>{{item.time}}</span></b>\
+				<p @click="changeCommenter(item.name,index)">{{item.content}}</p>\
+				<div v-if="item.reply.length > 0">\
+					<div class="reply" v-for="reply in item.reply">\
+						<b>{{reply.responder}}&nbsp;&nbsp;回复&nbsp;&nbsp;{{reply.reviewers}}<span>{{reply.time}}</span></b>\
+						<p @click="changeCommenter(reply.responder,index)"">{{reply.content}}</p>\
+					</div>\
+				</div>\
+			</div>\
+		</div>\
+	</div>',
+	props: ['comment'],
+	methods: {
+		changeCommenter: function(name,index) {
+			this.$emit("change",name,index);
+		}
+	}
+});
+
+Vue.component('commentTextarea',{
+	template:'\
+	<div class="commentBox">\
+		<h3>留言</h3>\
+		<b v-if="type">回复&nbsp;{{name}}</b>\
+		<textarea name="" placeholder=" 說點甚麼" v-model="commentText"></textarea>\
+		<button class="btn" @click="addComment">留言</button>\
+		<button class="btn" @click="canelComment">取消</button>\
+	</div>',
+	props: ['type','name'],
+	data: function(){
+		return {commentText:""}
+	},
+	methods: {
+		addComment: function() {
+			this.$emit("submit",this.commentText);
+			this.commentText = "";
+		},
+		canelComment: function() {
+			this.$emit("canel");
+			this.commentText = "";
+		}
+	}
+});
+
+var comment = new Vue({
+	el: "#comment",
+	data: {
+		commenter: "session",   //评论人
+		type: 0,                //0为评论作者1为评论别人的评论2为评论别人的别人
+		oldComment: null,
+		chosedIndex: -1,        //被选中的评论的index
+		article: {
+			title: "",
+			time: "",
+			// read:50,
+			content: ""
+			// "<p>当归是一种我们生活中经常使用到的药材，具有很好的活血补血以及调经止痛等功效，另外对女性月经不调或者是血虚等情况具有很好的治疗效果。日常生活中，很多人喜欢将当归泡水喝，这样不仅操作更加的简单，同时还能够调养身体。今天，小编就来和大家一起说说当归泡水喝的功效，来了解下吧！</p>\
+			// 	　　<p>当归泡水喝的功效</p>\
+			// 	　　<p>当归是一种非常常用的药材，并且在我国具有非常悠久的使用历史，历史的文献上记载，早在一千多年前我国就已经对当归进行人工培育了，而明朝就已经广泛种植。在我国的诸多中医名著之中，对于当归的药性还有使用方法都有着详细的介绍。具体的当归功效如下：</p>\
+			// 	　　<p>第一：改善肺部通气功能，提高体力</p>\
+			// 	　　<p>研究发现，将当归泡水喝或者是制作成为当归浸膏服用，能够很好的治疗各种各样的慢性气管炎，同时对于肺气肿还有各种心肺疾病都有着很好的疗效，有效的改善肺部通气情况，并且对于体力的恢复以及提高也有着很好的效果。</p>\
+			// 	　　<p>第二：提高身体免疫力</p>\
+			// 	　　<p>现代科学研究发现，当归中的萃取物阿魏酸钠，以及当归本身所含有的多糖，在进入身体之后对于体内的吞噬细胞系统具有非常明显的刺激作用，很好的调节以及刺激体内的免疫调节功能恢复。除此之外，健康的人群服用当归之后还能够很好的促进淋巴细胞的转化，令身体越来越健康。</p>"
+		},
+		comment: [
+			{
+				name: "林品萱",
+				time: "2021-0-13",
+				content: "拜託我需要,明天13:00中商一樓面交!",
+				reply: [
+					{
+						responder: "柯同學",
+						reviewers: "林品萱",
+						time: "2021-01-14",
+						content: "先搞搞期末吧"
+					},
+					// {
+					// 	responder: "傲娇的",
+					// 	reviewers: "有毒的黄同学",
+					// 	time: "2016-09-05",
+					// 	content: "很强"
+					// }
+				]
+			},
+			{
+				name: "田御旻",
+				time: "2021-01-14",
+				content: "我也要",
+				reply: []
+			}
+		]
+	},
+	methods: {
+		addComment: function(data) {
+			if(this.type == 0) {
+				this.comment.push({
+					name: '使用者',
+					time: getTime(),
+					content: data,
+					reply: []
+				});
+				//服务器端变
+			}else if(this.type == 1){
+				this.comment[this.chosedIndex].reply.push({
+					responder: '賣家',
+					reviewers:this.comment[this.chosedIndex].name,
+					time: getTime(),
+					content: data
+				});
+				this.type = 0;
+			}
+		},
+		changCommmer: function(name,index) {
+			this.oldComment = name;
+			this.chosedIndex = index;
+			this.type = 1;
+		},
+		canelCommit: function() {
+			this.type = 0;
+		}
+	}
+})
+
+
+//格式化时间
+function getTime() {
+	var now = new Date();
+	var year = now.getFullYear();
+	var month = now.getMonth()+1;
+	var day = now.getDate();
+	month.length < 2 ?  "0" + month : month;
+	day.length < 2 ?  "0" + day : day;
+	return year+"-"+month+"-"+day;
+}
+</script>   
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

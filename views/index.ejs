@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>中科大蝦米</title>
+</head>
+<body>
+ <!-- LOGO -->
+    <section id="logo">
+    <div class="container pt-3" >
+        <div class="row" id="homepage">
+            <div class="col ">
+              <a href="/" ><img src="images/中科大蝦米.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+        </div>
+            <div class="col ">
+                <img src="images/蝦米LOGO.png" class="mx-auto d-block">
+            </div>
+            <div class="col ">
+                <div>
+                  <% if (name) { %>
+                    <!-- <a class="btn btn-default" href="/logout">登出</a> -->
+                    <a href="/up" > <img src="images/我要救學弟妹.png" alt="HTML tutorial" class="mx-auto d-block"></a>
+                  <% } else { %>
+                    <!-- <a class="btn btn-default" href="/login">登入</a> -->
+                    <a href="/help"> <img src="images/我要救學弟妹.png" alt="HTML tutorial" class="mx-auto d-block"></a>
+                  <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    </section>
+<!-- 彩條 -->
+    <section>
+    <div class="container-fluid pt-3">
+      <img class="w-100" src="images/彩條.png" class="mx-auto d-block"> 
+    </div>
+    </section>
+
+    <!-- col lg -->
+    <div class="container pt-3">
+      <div class="row" id="homepage">
+          <!-- <div class="p-3 col-lg-2 lg2">
+              
+          </div> -->
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/resource" ><img src="images/不求人指南字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/print" ><img src="images/輸出店錦囊字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/exchange" ><img src="images/二手物交換字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/question" ><img src="images/疑難來解惑字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+        
+      </div>
+  </div>
+  
+  <!-- 框架 -->
+  <section>
+    <div class="container pt-3">
+      <div id="carousel-controller" class="carousel slide" data-ride="carousel">
+        <!-- 輪播圖片 -->
+        <div class="carousel-inner">
+          <!-- 圖片1 -->
+          <div class="carousel-item active">
+            <img  src="images/歡迎首頁.png" alt="">
+          </div>
+          <!-- 圖片2 -->
+          <div class="carousel-item">
+            <img  src="images/不求人指南.png" alt="">
+          </div>
+          <!-- 圖片3 -->
+          <div class="carousel-item">
+            <img  src="images/輸出店錦囊.png" alt="">
+          </div>
+          <!-- 圖片4 -->
+          <div class="carousel-item">
+              <img  src="images/二手物交換.png" alt="">
+            </div>
+          <!-- 圖片5 -->
+          <div class="carousel-item">
+              <img  src="images/疑難來解惑.png" alt="">
+            </div>  
+        </div>
+        <!-- 圖片上一頁按鈕 -->
+        <a href="#carousel-controller" data-slide="prev" class="carousel-control-prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <!-- 圖片下一頁按鈕 -->
+        <a href="#carousel-controller" data-slide="next" class=" carousel-control-next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+  
+        <!-- 下方點點 -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-controller" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-controller" data-slide-to="1"></li>
+          <li data-target="#carousel-controller" data-slide-to="2"></li>
+          <li data-target="#carousel-controller" data-slide-to="3"></li>
+          <li data-target="#carousel-controller" data-slide-to="4"></li>
+        </ol>
+      </div>
+    
+    </div>
+  </section>
+ 
+
+
+  <!-- 彩條 -->
+  <section>
+    <div class="container-fluid pt-3">
+      <img class="w-100" src="images/彩條.png" class="mx-auto d-block"> 
+    </div>
+    </section>
+
+    <!-- 聯絡方式 -->
+  <section>
+    <div class="container-fluid pt-3">
+      <img  src="images/聯絡方式.png" class="mx-auto d-block"> 
+    </div>
+    </section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

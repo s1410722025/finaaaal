@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit data by form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+  
+  body{
+	  font-family: Microsoft JhengHei;
+  }
+  form{
+    width:50%;
+    background-color:rgba(250,180,66,0.8);
+    padding:15px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 7px rgba(100, 100, 100, 0.5);
+  }
+</style>
+<body>
+ 
+<div class="container">
+  
+  <h2>遊戲基本資料</h2>
+  <form method="post"  action="/add" encType="multipart/form-data">
+    Game's name: <input  class="form-control"  type="text" name="gameName" placeholder="遊戲名稱" maxlength="10" required> <br>
+    ID: <select class="form-control" name="id" id="id">
+    <option value="" selected disabled hidden>Choose your ID</option>
+    <% student.forEach(function(item){ %>
+    <option value="<%= item.id %>"><%= item.id %> <%= item.name %></option>
+    <% }) %>
+
+    </select>
+    Author: <input class="form-control" type="text" name="author" id="author" placeholder="創作者" readonly><br>
+    Players: <input class="form-control" type="number" name="players" value="1" required><br>
+    Text Color:<input class="form-control" type="color" name="color" placeholder="文字顏色" value="#FFFFFF"><br>
+    Poster (800x400 px, Maximum 200Kb): <input class="form-control-file" type="file" name="poster" required><br>
+    Game file (.zip): Please upload it when this game data created successfully.<br><br> 
+    <input class="btn btn-danger" type="submit" value="Submit">
+  </form>
+</div>
+</body>
+<script>
+  $(function(){
+    $("#id").change(function(){
+      var idx=this.selectedIndex+1;
+      var selected = $("#id option:nth-child("+idx+")").html();
+      var name=selected.split(' ')[1];
+      //console.log(name);
+      $("#author").val(name);
+    })
+    
+  })
+</script>
+
+</html>

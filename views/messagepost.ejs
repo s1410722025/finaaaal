@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言板</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    body {
+      overflow: hidden;
+      padding-top: 30px;
+      background-color: rgb(114, 172, 223);
+      text-align: left;
+    }
+
+    #container {
+      margin: auto;
+    }
+
+    #sb{
+      margin: auto;
+    }
+
+    #tt{
+      font-size: 24px;
+      font-family: sans-serif;
+      font-weight: bold;
+      text-align: center;
+      color: rgb(255, 255, 255);
+    }
+
+    #tt1{
+      font-size: 20px;
+      font-family: sans-serif;
+      text-align: left;
+      color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+
+<body style="overflow-y:auto ;">
+  <div class="title" id="tt">
+      <p>測試留言板</p>
+  </div>
+  <form action="/answermessage" method="POST">
+    <div class="container ">
+      <div class="row">
+          <div class="col-md-3 col-sm-12 "></div>
+          <div class="col-md-6 col-sm-12 ">
+            <div class="form-group">
+            <label for="text" id="tt1" >名稱:<% messagepost.forEach(function(item){ %><%= item.name %><% }) %></label>
+            </div>
+            <div class="form-group">
+              <label for="my-textarea" style="color: rgb(255, 255, 255);">想說甚麼</label>
+              <textarea class="form-control" placeholder="說點甚麼" id="umessage" name="umessage" rows="3"></textarea>
+            </div>
+            <!-- <div class="col-md-12 " style="text-align: right;">
+              <button type="submit" class="btn btn-primary">送出</button>
+            </div> -->
+            <div class="col-md-12 " style="text-align: center;">
+              <input type="submit" id="answermessage" value="送出" ></input>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-12 "></div>
+          
+      </div>
+    </div>
+    </div>
+  </form>
+
+  <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/crypto-js.js"></script>
+
+  <script type="text/javascript">
+    $('#answermessage').click(function (evt) {
+        evt.preventDefault();
+        $.ajax({
+            url: '/answermessage',
+            type: 'POST',
+            data: {
+                name: $("#uname").val(),
+                message: $("#umessage").val()
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.ret_code === 0) {
+                    console.log("Success!");
+                    alert("留言成功");
+                    window.location.href="/allmessage"; 
+                }else if(data.ret_code === 1){
+                    alert("留言失敗");
+                    window.history.go(0);
+                }
+                else if(data.ret_code === 2){
+                    alert("未登入");
+                    window.location.href="/login"; 
+                }else if(data.ret_code === 3){
+                    alert("輸入不得為空!");
+                }else if(data.ret_code === 4){
+                    alert("尚未註冊");
+                }
+            }
+        });
+    });
+</script>
+
+
+
+</body>
+
+</html>

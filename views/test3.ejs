@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+  <div class="container">
+    <% if (name) { %>
+      <a class="btn btn-default" href="/logout">登出</a>
+    <% } else { %>
+      <a class="btn btn-default" href="/login">登入</a>
+    <% } %>
+
+    <a class="btn btn-primary" href="/posts">發表新留言</a>
+    <h2>留言列表</h2>
+
+  </div>
+</body>
+</html>

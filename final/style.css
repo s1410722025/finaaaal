@@ -1,0 +1,164 @@
+body {
+    /* margin: 0; */
+    font-family: '微軟正黑體', sans-serif;
+  }
+
+img {
+    max-width: 100%;
+    height: auto;
+
+}
+.bg-image {
+  background-image: url(images/上架/框.png);  
+  /* 自己的電腦圖片資料夾位置 */
+  /* position: absolute;  絕對位置 */
+  position: relative;
+  background-repeat: no-repeat;
+  left: 0;
+  right: 0;
+  /* top: 0;
+  bottom: 0; */
+  background-position: center;
+  background-size: auto;
+  /* z-index: -999; 設定圖片層級 */
+  height: 500px;
+}
+
+#container {
+  margin: auto;
+  text-align: center;
+}
+
+#homepage{
+  margin: 0%;
+}
+
+/* #rainbow {
+  margin:220px;
+} */
+
+.row{
+  align-items: center;
+  justify-content:center;
+  /* margin: 200px; */
+}
+
+#button{
+  margin: 180px;
+}
+
+.nav-link {
+  padding: 0px;
+}
+
+input{
+  border: none;
+}
+
+.print {
+  padding: 0px;
+}
+
+.camera,.tripod,.classroom {
+  padding-top: 20px;
+ text-align: center;
+}
+
+.dif {
+  position: fixed;
+  z-index: 1;
+}
+
+.prodoct {
+  display: flex;
+  align-items: flex-start;
+  width: 1043px;
+  height:600px;
+  background-color: #eeeeef;
+}
+
+.prize {
+  height: 90px;
+  border: 4px solid rgb(255, 255, 255);
+}
+
+.explain {
+  height: 149px;
+  width: 532px;
+  border: 4px solid rgb(255, 255, 255);
+}
+
+.explain h1 {
+  padding: 13px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.iwant {
+  z-index: 1;
+  position:fixed;
+}
+
+.up {
+  background-image: url(images/上架/框.png);  
+  /* 自己的電腦圖片資料夾位置 */
+  display: flex;
+  align-items: flex-start;
+  position: relative;  /*絕對位置*/
+  background-repeat: no-repeat;
+  left: 0;
+  right: 0;
+  /* top: 0;
+  bottom: 0; */
+  background-position: center;
+  background-size: auto;
+  /* z-index: -999; 設定圖片層級 */
+  height: 500px;
+  width:988px ;
+  background-image: url(images/上架/框.png);  
+  /* 自己的電腦圖片資料夾位置 */
+  /* position: absolute;  絕對位置 */
+
+}
+
+.bd{
+  height: 149px;
+  width: 532px;
+  border: 4px solid rgb(0, 0, 0);
+}
+
+.upp {
+  z-index: 1;
+  position:fixed; 
+}
+
+#footer {
+  /* 設定footer的高度 */
+  height: 100px;
+  box-sizing: border-box;
+  /* 設定footer絕對位置在底部 */
+  /* position: absolute; */
+  bottom: 0;
+  /* 展開footer寬度 */
+  width: 100%;
+}
+
+form{
+  margin:6em 5.3em 5.3em 5.3em;
+}
+
+.messege{
+  background-image: url(images/二手物交換/留言顯示/00.png);  
+  /* 自己的電腦圖片資料夾位置 */
+  /* position: absolute;  絕對位置 */
+  position: relative;
+  background-repeat: no-repeat;
+  left: 0;
+  right: 0;
+  /* top: 0;
+  bottom: 0; */
+  background-position: center;
+  background-size:100%;
+  /* z-index: -999; 設定圖片層級 */
+  height: 224px;
+}

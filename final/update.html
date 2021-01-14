@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改密碼</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container bg-image " >
+    <div class="row " id="rainbow">
+        <div class="col-6" >
+            <form action="/update" method="POST" id="center">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">學　號</span>
+                    <input type="text" class="form-control" style="border-radius:0% 0.25rem 0.25rem 0%" placeholder="Enter student number" id="uid" name="uid">
+                  </div>
+                  <div>
+                    
+                  </div>
+                </div>
+                <div class="input-group mb-3" >
+                  <div class="input-group-prepend"　>
+                      <span class="input-group-text">密　碼</span>
+                      <input type="password" class="form-control" style="border-radius:0% 0.25rem 0.25rem 0%" placeholder="Enter password" id="upwd" name="upwd">   
+                  </div>
+                  <div >
+                      
+                  </div>
+                </div>
+                <div class="input-group mb-3 ">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">修改密碼</span>
+                      <input type="password" class="form-control" style="border-radius:0% 0.25rem 0.25rem 0%" placeholder="Enter new password" id="newupwd" name="newupwd">
+                  </div>
+                  <div >
+                      
+                  </div>
+                </div>
+                <div class="col-md-12 " style="text-align: center;">
+                  <input type="submit" id="update" value="修改" ></input>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/crypto-js.js"></script>
+
+    <script type="text/javascript">
+      $('#update').click(function (evt) {
+          evt.preventDefault();
+          $.ajax({
+              url: '/update',
+              type: 'POST',
+              data: {
+                  id: $('#uid').val(),
+                  password: CryptoJS.SHA256($('#upwd').val()).toString(CryptoJS.enc.Hex),
+                  password2: CryptoJS.SHA256($('#newupwd').val()).toString(CryptoJS.enc.Hex)
+              },
+              success: function (data) {
+                  if (data.ret_code === 0) {
+                      console.log("Success!");
+                      alert("修改成功");
+                      window.location.href="/signin.html"; 
+                  }else if(data.ret_code === 1){
+                      alert("帳號或密碼錯誤");
+                      window.history.go(0);
+                  }
+                  else if(data.ret_code === 2){
+                      alert("修改失敗");
+                      window.history.go(0); 
+                  }else if(data.ret_code === 3){
+                      alert("輸入不得為空!");
+                      window.history.go(0);
+                  }else if(data.ret_code === 4){
+                      alert("尚未登入");
+                      window.location.href="/signin.html"; 
+                  }
+
+              }
+          });
+      });
+  </script>    
+
+</body>
+</html>

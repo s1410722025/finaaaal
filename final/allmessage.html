@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+
+    <style>
+        body {
+          overflow: hidden;
+          padding-top: 30px;
+          background-color: rgb(114, 172, 223);
+          text-align: left;
+        }
+    
+        .container {
+          margin: auto;
+        }
+    
+        #sb{
+          margin: auto;
+        }
+    
+        #tt{
+          font-size: 30px;
+          font-family: sans-serif;
+          font-weight: bold;
+          text-align: center;
+          color: rgb(255, 255, 255);
+        }
+
+        #tt1{
+          font-size: 24px;
+          font-family: sans-serif;
+          font-weight: bold;
+          text-align: center;
+          color: rgb(255, 255, 255);
+        }
+
+        .scrollbar{
+          scrollbar-arrow-color:rgb(255, 255, 255);scrollbar-base-color:rgb(187, 187, 187);
+          overflow:auto;
+          height:300px;
+          width:300px;
+        }
+      </style>
+      <script>
+        function isHidden(answer){
+            var vDiv = document.getElementById(answer);
+            vDiv.style.display = (vDiv.style.display == 'none')?'block':'none';
+          }
+      </script>
+</head>
+
+<body style="overflow-y:auto">
+  <div class="container py-3 " >
+    <div class="container py-3 " >
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                    <p id="tt">測試留言板輸出</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div id="tt1">{{item.name}}  {{item.message}}</div>
+              <div class="col-md-12 " style="text-align: center;" style="cursor:hand" onclick="isHidden('answer')">
+                <input type="submit" value="回覆"></input>
+
+              </div>
+                <hr size="2px" align="center" width="100%" color="#e9e9e9">
+                <!-- 分隔線 -->
+            </div>
+        </div>
+    </div>
+    
+          <form action="/answer" method="POST">
+            <div class="container " id="answer" style="display: none;">
+              <div class="row" >
+                  <div class="col-md-3 col-sm-12 "></div>
+                  <div class="col-md-6 col-sm-12 " >
+                    <div class="form-group">
+                      <textarea class="form-control" placeholder="回覆" id="umessage" name="umessage" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-12 " style="text-align: center;">
+                      <input type="submit" id="answer" value="送出" ></input>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- 彈出回覆視窗 -->
+          <div class="container">
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              我要!
+            </button>
+          
+            <!-- 彈出框 -->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                
+                  <!-- 彈出框標題 -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">留言</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  
+                  <!-- 彈出框內部 -->
+                  <div class="modal-body">
+                        <form action="/message" method="POST">
+                          <div class="container ">
+                            <div class="row" >
+                                <div  class="col-md-12 col-sm-12">
+                                  <div class="form-group">
+                                    <textarea class="form-control" placeholder="回覆" id="umessage" name="umessage" rows="3"></textarea>
+                                  </div>
+                                </div>
+                  <!-- 彈出框最下面 -->
+                              <div class="col-md-12 col-sm-12" style="text-align: center;">
+                                    <input type="submit" id="message" value="送出" ></input>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 彈出框結束 -->
+
+  </div>
+
+  <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/crypto-js.js"></script>
+
+  <script type="text/javascript">
+    $('#message').click(function (evt) {
+        evt.preventDefault();
+        $.ajax({
+            url: '/message',
+            type: 'POST',
+            data: {
+                message: $("#umessage").val()
+            },
+            dataType: "json",
+            success: function (data) {
+                if (data.ret_code === 0) {
+                    console.log("Success!");
+                    alert("留言成功");
+                    window.location.href="/allmessage"; 
+                }else if(data.ret_code === 1){
+                    alert("留言失敗");
+                    window.history.go(0);
+                }
+                else if(data.ret_code === 2){
+                    alert("未登入");
+                    window.location.href="/signin.html"; 
+                }else if(data.ret_code === 3){
+                    alert("輸入不得為空!");
+                }else if(data.ret_code === 4){
+                    alert("尚未註冊");
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</html>

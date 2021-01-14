@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>Title</title>
+</head>
+<body>
+<!-- 可以輪播的Banner圖片 -->
+<section>
+    <div class="container pt-3">
+      <div id="carousel-controller" class="carousel slide" data-ride="carousel">
+        <!-- 輪播圖片 -->
+        <div class="carousel-inner">
+          <!-- 圖片1 -->
+          <div class="carousel-item active">
+            <img  src="images/歡迎首頁.png" alt="">
+          </div>
+          <!-- 圖片2 -->
+          <div class="carousel-item">
+            <img  src="images/不求人指南.png" alt="">
+          </div>
+          <!-- 圖片3 -->
+          <div class="carousel-item">
+            <img  src="images/輸出店錦囊.png" alt="">
+          </div>
+          <!-- 圖片4 -->
+          <div class="carousel-item">
+              <img  src="images/二手物交換.png" alt="">
+            </div>
+          <!-- 圖片5 -->
+          <div class="carousel-item">
+              <img  src="images/疑難來解惑.png" alt="">
+            </div>  
+        </div>
+        <!-- 圖片上一頁按鈕 -->
+        <a href="#carousel-controller" data-slide="prev" class="carousel-control-prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <!-- 圖片下一頁按鈕 -->
+        <a href="#carousel-controller" data-slide="next" class=" carousel-control-next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+  
+        <!-- 下方點點 -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-controller" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-controller" data-slide-to="1"></li>
+          <li data-target="#carousel-controller" data-slide-to="2"></li>
+          <li data-target="#carousel-controller" data-slide-to="3"></li>
+          <li data-target="#carousel-controller" data-slide-to="4"></li>
+        </ol>
+      </div>
+    
+    </div>
+  </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

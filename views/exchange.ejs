@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>二手物交換</title>
+</head>
+<body>
+  <style>
+  .button 
+  {
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+  }
+    
+  </style>
+ <!-- LOGO -->
+
+ <div class="container pt-3 " id="logo">
+  <div class="row boder" id="homepage">
+      <div class="col ">
+        <a href="/" ><img src="images/中科大蝦米.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+  </div>
+      <div class="col ">
+          <img src="images/蝦米LOGO.png" class="mx-auto d-block">
+      </div>
+      <div class="col ">
+          <div>
+            <% if (name) { %>
+              <!-- <a class="btn btn-default" href="/logout">登出</a> -->
+              <a href="/up" > <img src="images/我要救學弟妹.png" alt="HTML tutorial" class="mx-auto d-block"></a>
+            <% } else { %>
+              <!-- <a class="btn btn-default" href="/login">登入</a> -->
+              <a href="/help"> <img src="images/我要救學弟妹.png" alt="HTML tutorial" class="mx-auto d-block"></a>
+            <% } %>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- 彩條 -->
+
+    <div class="container-fluid pt-3 ">
+      <img class="w-100" src="images/彩條.png" class="mx-auto d-block"> 
+    </div>
+   
+
+    <!-- col lg -->
+    <div class="container pt-3 ">
+      <div class="row" id="homepage">
+          <!-- <div class="p-3 col-lg-2 lg2">
+              
+          </div> -->
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/resource" ><img src="images/不求人指南字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/print" ><img src="images/輸出店錦囊字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/exchange" ><img src="images/二手物交換字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+          <div class="p-3 col-lg-2 lg2">
+            <a href="/question" ><img src="images/疑難來解惑字.png"  alt="HTML tutorial" class="mx-auto d-block"></a>
+            <br>
+          </div>
+        
+      </div>
+  </div>
+  <!-- 框架 -->
+  
+  <div class="container">
+    
+    <form method="POST"  action="/product" >
+    <!-- <form action="/add" method="GET"> -->
+    <div class="row" >
+        <% exchange.forEach(function(item){ %>
+       <div class="col-sm-4" v-for="item in student">
+           <!-- Card Wider -->
+           <div class="card card-cascade wider">
+
+               <!-- Card image -->
+               <div class="view view-cascade overlay" v-if="item.img">
+                   <!-- <img class="card-img-top" src="images/<%= item.img %>.png" alt="Card image cap"> -->
+                   <img class="card-img-top" src="upload/<%= item.img %>" alt="Card image cap">
+               </div>
+
+               <!-- Card content -->
+               <div class="card-body card-body-cascade text-center">
+
+                   <!-- Title -->
+                   <!-- <h4 class="card-title"><strong><%= item.name %></strong></h4> -->
+                   <h4 class="card-title">
+                     <!-- <a href="/product">  -->
+                      <strong><%= item.price %>元  </strong></a></h4>
+                     
+                   <!-- Subtitle -->
+                   <!-- <h5 class="blue-text pb-2"><strong><%= item.id %></strong></h5> -->
+                   <h5 class="blue-text pb-2"><strong><%= item.Description %></strong></h5>
+                 
+                   <!-- <input type="submit" id="product" value="<%= item.Description %>" ></input> -->
+                   <button type="submit" id="<%= item.Description %>" name="productd" value="<%= item.Description %>" required>商品詳情</button>
+                   <!-- <button type="button" class="close" >商品詳情</button>  -->
+               <!-- <a href="/product" class="btn btn-primary" type="submit"value ="test" >商品詳情</a>     -->
+               </div>
+
+           </div>
+           <!-- Card Wider -->
+       </div>
+       <% }) %>
+     </div>
+   <!-- </form> -->
+  </form>
+</div>
+
+
+  <!-- 彩條 -->
+<footer id="footer">
+    <div class="container-fluid pt-3 ">
+
+      <img class="w-100" src="images/彩條.png" class="mx-auto d-block"> 
+
+    </div>
+
+
+    <!-- 聯絡方式 -->
+
+    <div class="container-fluid pt-3 ">
+      <img  src="images/聯絡方式.png" class="mx-auto d-block"> 
+    </div>
+  
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<!-- <script src="js/jquery-3.5.1.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</html>
